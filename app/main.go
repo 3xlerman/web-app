@@ -2,22 +2,18 @@ package main
 
 import (
 	"fmt"
+	"github.com/3xlerman/web-app/app/handlers"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	fmt.Println("Hello, World!")
 
-
 	// Create nginx-server
 	app := gin.Default()
 
 	// Test-request
-	app.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	app.GET("/home", handlers.Home)
 
 	// Run application
 	err := app.Run()
