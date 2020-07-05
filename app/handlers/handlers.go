@@ -10,3 +10,13 @@ func Home(c *gin.Context) {
 		"Title": "Homepage",
 	})
 }
+
+func Person(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"First name": "",
+		"Last name":  "",
+		"Age":        "",
+		"Weight": "",
+
+	})
+}
