@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/3xlerman/web-app/app/config"
+	"github.com/3xlerman/web-app/app/model"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -11,6 +12,8 @@ import (
 	"log"
 	"time"
 )
+
+var usersCollection *mongo.Collection
 
 func Connect() {
 
@@ -39,4 +42,15 @@ func Connect() {
 		log.Fatal(err)
 	}
 	fmt.Println(databases)
+
+	usersCollection = client.Database("lermanDB").Collection("lermanCollection")
+}
+
+func InsertUser(user model.User) (err error) {
+	_, err = usersCollection.InsertOne(context.TODO(), user)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	return
 }

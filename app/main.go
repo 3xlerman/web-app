@@ -21,7 +21,7 @@ func main() {
 
 	// Test-request
 	app.GET("/home", handlers.Home)
-	app.GET("/person", handlers.Person)
+	app.POST("/person", handlers.Person)
 
 	// Run application
 	err := app.Run()
