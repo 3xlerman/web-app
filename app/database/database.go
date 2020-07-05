@@ -3,6 +3,7 @@ package database
 import (
 	"context"
 	"fmt"
+	"github.com/3xlerman/web-app/app/config"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -14,7 +15,7 @@ import (
 func Connect() {
 
 	// Client connection
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://3xlerman:Lerman597@lermancluster.3bezk.mongodb.net/<dbname>?retryWrites=true&w=majority"))
+	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://3xlerman:" + config.MongoDBPassword + "@lermancluster.3bezk.mongodb.net/<dbname>?retryWrites=true&w=majority"))
 	if err != nil {
 		log.Fatal(err)
 	}

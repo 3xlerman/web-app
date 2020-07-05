@@ -9,7 +9,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello, World!")
 
 	// Load config
 	config.Load()
