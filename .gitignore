@@ -54,3 +54,4 @@ dkms.conf
 # Other
 .idea
 cmake-build-debug
+*.sum
