@@ -17,9 +17,6 @@ func Home(c *gin.Context) {
 
 func Person(c *gin.Context) {
 
-	var status int
-	var message string
-
 	jsonInput := struct {
 		Firstname string `json:"firstname" binding:"required"`
 		Lastname  string `json:"lastname" binging:"required"`
@@ -50,14 +47,10 @@ func Person(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": "internal server error",
 		})
+		return
 	}
 
-	if status == 0 {
-		message = "ok"
-		status = http.StatusOK
-	}
-
-	c.JSON(status, gin.H{
-		"message": message,
+	c.JSON(http.StatusOK, gin.H{
+		"message": "ok",
 	})
 }
